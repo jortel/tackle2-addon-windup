@@ -1,7 +1,7 @@
 FROM registry.access.redhat.com/ubi8/go-toolset:1.16.7 as builder
 ENV GOPATH=$APP_ROOT
 COPY --chown=1001:0 . .
-RUN make addon
+RUN make cmd
 
 FROM registry.access.redhat.com/ubi8/openjdk-8-runtime
 USER root

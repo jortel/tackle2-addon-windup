@@ -19,6 +19,12 @@ func (r *Windup) Run() (err error) {
 	cmd := Command{Path: "/opt/windup"}
 	cmd.Options = r.options()
 	err = cmd.Run()
+	if cmd.Out.Len() > 0 {
+		addon.Activity("[CMD] stdout: %s", cmd.Out.String())
+	}
+	if cmd.Err.Len() > 0 {
+		addon.Activity("[CMD] stderr: %s", cmd.Err.String())
+	}
 	if err != nil {
 		return
 	}
