@@ -67,7 +67,7 @@ func main() {
 				return
 			}
 			var r Repository
-			r, err = newRepository(application)
+			r, err = newRepository(HomeDir, application)
 			if err != nil {
 				return
 			}
