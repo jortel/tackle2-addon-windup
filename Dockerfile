@@ -29,7 +29,8 @@ RUN wget -qO /opt/windup.zip $WINDUP \
 ENV HOME=/working \
     JAVA_HOME="/usr/lib/jvm/jre-11" \
     JAVA_VENDOR="openjdk" \
-    JAVA_VERSION="11"
+    JAVA_VERSION="11" \
+    MAX_MEMORY="4g"
 WORKDIR /working
 COPY --from=builder /opt/app-root/src/bin/addon /usr/local/bin/addon
 ENTRYPOINT ["/usr/local/bin/addon"]
