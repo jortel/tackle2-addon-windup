@@ -56,6 +56,12 @@ func (r *Windup) Run() (err error) {
 	if err != nil {
 		return
 	}
+	maxMemory := addon.Addon().MaxMemory()
+	if maxMemory > 0 {
+		_ = os.Setenv(
+			"MAX_MEMORY",
+			strconv.FormatInt(maxMemory, 10))
+	}
 	err = cmd.Run()
 	if err != nil {
 		r.reportLog()
@@ -420,7 +426,7 @@ func (r *Rules) addBundleRepository(options *command.Options, bundle *api.RuleBu
 	ruleDir := pathlib.Join(rootDir, bundle.Repository.Path)
 	options.Add(
 		"--userRulesDirectory",
-		ruleDir)
+		"''"+ruleDir+"''")
 	err = r.FindTargets(ruleDir)
 	if err != nil {
 		return
@@ -459,7 +465,7 @@ func (r *Rules) addRepository(options *command.Options) (err error) {
 	ruleDir := pathlib.Join(rootDir, r.Repository.Path)
 	options.Add(
 		"--userRulesDirectory",
-		ruleDir)
+		"''"+ruleDir+"''")
 	err = r.FindTargets(ruleDir)
 	if err != nil {
 		return
