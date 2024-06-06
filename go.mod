@@ -3,7 +3,7 @@ module github.com/konveyor/tackle2-addon-windup
 go 1.18
 
 require (
-	github.com/konveyor/tackle2-addon v0.1.2-0.20230510185644-c600b133619a
+	github.com/konveyor/tackle2-addon v0.2.2-0.20231122143132-dbf339fc92e8
 	github.com/konveyor/tackle2-hub v0.1.2-0.20230518195404-5e39c8efad05
 
 )
